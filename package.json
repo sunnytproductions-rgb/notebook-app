@@ -1,0 +1,62 @@
+{
+  "name": "notebook-app",
+  "version": "1.0.0",
+  "description": "A cute desktop notebook app for organizing textbook notes",
+  "author": "Alex P. & Sunny S.",
+  "license": "MIT",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "vite build && electron-builder",
+    "electron:build:win": "vite build && electron-builder --win"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "electron": "^32.3.3",
+    "electron-builder": "^25.1.8",
+    "vite": "^6.0.5",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.notebook.app",
+    "productName": "My Notebook",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "installerIcon": "public/icon.png",
+      "uninstallerIcon": "public/icon.png",
+      "installerHeaderIcon": "public/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/icon.png"
+    }
+  }
+}
