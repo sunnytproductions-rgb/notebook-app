@@ -9,7 +9,7 @@ function createWindow() {
     minWidth: 800,
     minHeight: 600,
     title: 'My Notebook',
-    icon: path.join(__dirname, '..', 'public', 'icon.png'),
+    // icon: path.join(__dirname, '..', 'public', 'icon.png'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
